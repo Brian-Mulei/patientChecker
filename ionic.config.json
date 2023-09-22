@@ -1,0 +1,7 @@
+{
+  "name": "patientChecker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
