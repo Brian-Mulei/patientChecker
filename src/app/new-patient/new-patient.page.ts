@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import { ActivatedRoute ,Router,NavigationExtras} from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, timer } from 'rxjs'
 @Component({
   selector: 'app-new-patient',
   templateUrl: './new-patient.page.html',
@@ -29,18 +32,30 @@ export class NewPatientPage implements OnInit {
   onItemSelected(event: any) {
     this.selectedItem = event.detail.value;
   }
-  editData(){
-     this.editformData.FirstName= this.data.FirstName,
-    this.editformData.LastName= this.data.LastName,
-    this.editformData.DateOfBirth= this.data.DateOfBirth,
-    this.editformData.Gender= this.selectedItem,
-    this.editformData.ContactNumber= this.data.ContactNumber,
-    this.editformData.Address= this.data.Address
+  private delay(ms: number): Observable<any> {
+    return timer(ms);
+  }
+  editData(){ 
+    this.editformData.Gender= this.selectedItem, 
    
      
      this.api.createPatient(this.editformData).subscribe(
       (response)=> {
-        this.router.navigate(['/patient']);
+
+        this.editformData = {
+          FirstName: "",
+         LastName: " ",
+         DateOfBirth:null,
+         Gender: " ",
+         ContactNumber: null, 
+         Address:  ""
+       };
+
+       return   this.delay(2000).pipe(
+        switchMap(() =>  this.router.navigate(['/patient'])
+        )
+      )   
+       
 
 
      },

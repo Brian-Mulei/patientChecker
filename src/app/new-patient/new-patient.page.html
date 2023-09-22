@@ -16,11 +16,11 @@
   <form (ngSubmit)="editData()">
 
     <ion-input label="First Name" label-placement="floating" required fill="outline" name="Firstname"
-    [(ngModel)]=data.FirstName></ion-input>
+    [(ngModel)]="editformData.FirstName"></ion-input>
     <ion-col></ion-col>
 
     <ion-input label="Last Name" label-placement="floating" required fill="outline" name="LastName"
-    [(ngModel)]=data.LastName  ></ion-input>
+    [(ngModel)]="editformData.LastName"  ></ion-input>
       <ion-col></ion-col>
 
 
@@ -32,16 +32,16 @@
     <ion-col></ion-col>
 
     <ion-input label="Date Of Birth" label-placement="floating" required fill="outline" name="Dob"
-    [(ngModel)]="data.DateOfBirth"
+    [(ngModel)]="editformData.DateOfBirth"
       type="date"></ion-input>
       <ion-col></ion-col>
 
       <ion-input label="Phone Number" label-placement="floating" required fill="outline" name="ContactNumber"
-      [(ngModel)]="data.ContactNumber" ></ion-input>
+      [(ngModel)]="editformData.ContactNumber" ></ion-input>
     <ion-col></ion-col>
 
     <ion-input label="Address" label-placement="floating"  required fill="outline" name="Address"
-    [(ngModel)]=data.Address  type="text"></ion-input>
+    [(ngModel)]="editformData.Address"  type="text"></ion-input>
     <ion-row></ion-row>
     <ion-col></ion-col>
 

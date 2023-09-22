@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute ,Router,NavigationExtras} from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ApiService } from '../services/api/api.service';
+import { switchMap } from 'rxjs/operators';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, timer } from 'rxjs'
 @Component({
   selector: 'app-sub-patient',
   templateUrl: './sub-patient.page.html',
@@ -59,14 +62,18 @@ export class SubPatientPage implements OnInit {
   
     await alert.present();
   }
-
+  private delay(ms: number): Observable<any> {
+    return timer(ms);
+  }
   deleteItem(id: number) {
     // Make your delete request here
      // Replace the console.log with your actual HTTP request
     this.api.deletePatient(id).subscribe(
       (response)=> {
-        this.router.navigate(['/patient']);
-
+        return   this.delay(2000).pipe(
+          switchMap(() =>  this.router.navigate(['/patient'])
+          )
+        )  
 
      },
      (error) =>{
