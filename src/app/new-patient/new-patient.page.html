@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Create Patient</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Create Patient</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div style="margin-top: 3vh; padding: 2vW;">
+
+  <form (ngSubmit)="editData()">
+
+    <ion-input label="First Name" label-placement="floating" required fill="outline" name="Firstname"
+    [(ngModel)]=data.FirstName></ion-input>
+    <ion-col></ion-col>
+
+    <ion-input label="Last Name" label-placement="floating" required fill="outline" name="LastName"
+    [(ngModel)]=data.LastName  ></ion-input>
+      <ion-col></ion-col>
+
+
+      <ion-select label="Gender"  (ionChange)="onItemSelected($event)"   placeholder="Gender">
+        <ion-select-option value="Female">Female</ion-select-option>
+        <ion-select-option value="Male">Male</ion-select-option>
+       </ion-select>
+    
+    <ion-col></ion-col>
+
+    <ion-input label="Date Of Birth" label-placement="floating" required fill="outline" name="Dob"
+    [(ngModel)]="data.DateOfBirth"
+      type="date"></ion-input>
+      <ion-col></ion-col>
+
+      <ion-input label="Phone Number" label-placement="floating" required fill="outline" name="ContactNumber"
+      [(ngModel)]="data.ContactNumber" ></ion-input>
+    <ion-col></ion-col>
+
+    <ion-input label="Address" label-placement="floating"  required fill="outline" name="Address"
+    [(ngModel)]=data.Address  type="text"></ion-input>
+    <ion-row></ion-row>
+    <ion-col></ion-col>
+
+
+
+    <div>
+      <ion-button class="button" type="submit" (click)="editData()" shape="round">
+        CONFIRM
+      </ion-button>
+      <ion-button class="button" color="danger" shape="round">
+        CANCEL
+      </ion-button>
+    </div>
+
+  </form>
+    
+  </div>
+</ion-content>

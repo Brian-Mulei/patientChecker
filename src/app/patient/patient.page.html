@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>patient</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink ='/new-patient'>
+        Create
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">patient</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ng-container *ngIf="isLoading">
+    <!-- Display your loading spinner or skeleton here -->
+        <ion-spinner  class="col-center" name="crescent">
+        
+      </ion-spinner>
+   </ng-container>
+  
+  <!--ng-container *ngIf="error">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+  
+    {{ error }}
+    </div>  
+  </ng-container-->
+  
+  <ng-container *ngIf="!isLoading && data">
+    <!-- Display your data here -->
+    <div class="card p-2 m-4">
+      <h2>Patients</h2>
+      <ion-list *ngFor="let item of data">
+
+        <ion-item (click)="onItemClick(item)" >
+          <ion-label>{{item.FirstName + " "+item.LastName}}</ion-label>
+        </ion-item>
+      </ion-list>
+   
+  </div>
+   
+   
+  </ng-container>
+  
+  
+
+
+</ion-content>
+<app-bottom-bar></app-bottom-bar>
+ 

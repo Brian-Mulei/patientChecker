@@ -11,10 +11,64 @@
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header >
+  <div class="slides">
+    <swiper-container  
+    [slidesPerView] ='1'
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    [autoplay]="{
+      delay: 2000,
+      disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+    stopOnLastSlide: false,
+    waitForTransition: true
+  }"
+  modules={[Autoplay]}
+    [pagination]="{dynamicBullets:true,clickable:true}"
+    [centeredSlides]="true"
+     [loop]="true"
+    >
+      <swiper-slide>
+        
+        <ion-card class="my-custom-card">
+        <!-- Card content goes here -->
+        <ion-card-header>
+          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          Here's  for the card content. 
+        </ion-card-content>
+      </ion-card>
+</swiper-slide>
+      <swiper-slide>
+        <ion-card class="my-custom-card-b">
+          <!-- Card content goes here -->
+          <ion-card-header>
+            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            Here's  for the card content. 
+          </ion-card-content>
+        </ion-card>
+        
+      </swiper-slide>
+      <swiper-slide>  <ion-card class="my-custom-card-c">
+        <!-- Card content goes here -->
+        <ion-card-header>
+          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          Here's  for the card content. 
+        </ion-card-content>
+      </ion-card></swiper-slide>
+    </swiper-container>
+
   </div>
 </ion-content>
+<app-bottom-bar></app-bottom-bar>

@@ -1,0 +1,78 @@
+ 
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>File Uploader</ion-title>
+    <ion-buttons slot="end">
+      <ion-button> <input type="file" (change)="uploadPhoto($event)" />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">File Uploader</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ng-container *ngIf="isLoading">
+    <!-- Display your loading spinner or skeleton here -->
+        <ion-spinner  class="col-center" name="crescent">
+        
+      </ion-spinner>
+   </ng-container>
+  
+  <!--ng-container *ngIf="error">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+  
+    {{ error }}
+    </div>  
+  </ng-container-->
+  
+  <ng-container *ngIf="!isLoading && uploadedFiles">
+    <!-- Display your data here -->
+    <div class="card p-2 m-4">
+      <h2 class="ion-text-center">Images</h2>
+      <ion-list >
+ 
+        <ion-item *ngFor="let file of uploadedFiles; index as position">
+
+          <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+
+          <ion-card >
+            <img   style="width: 200px;" alt="Silhouette of mountains" src="{{baseImageUrl + file.image}}" />
+            
+            <ion-card-header>
+              <ion-card-title>{{file.name.split('.')[0]}}</ion-card-title>
+              <ion-card-subtitle>Created on {{ file.created_at.split('T')[0]}}</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content>
+              <!-- ion-button id="present-alert">Delete</ion-button>
+              <ion-alert
+                trigger="present-alert"
+                header="Alert"
+                subHeader="Important message"
+                message="This is an alert!"
+                [buttons]="alertButtons"
+              ></ion-alert -->
+            </ion-card-content>
+          </ion-card>
+
+          </div>
+         </ion-item>
+    
+     
+      </ion-list>
+   
+  </div>
+  </ng-container>
+
+
+
+ 
+ </ion-content>
+ 
+<app-bottom-bar>  </app-bottom-bar> 
+ 

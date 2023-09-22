@@ -1,0 +1,27 @@
+ 
+
+<ion-content [fullscreen]="true">
+  <app-logo></app-logo>
+
+  <div class="container">
+<div class="form" center>
+  <form (ngSubmit)="login(formData)">
+
+  <ion-input label="UserName" label-placement="floating" fill="outline" name="username" [(ngModel)]="formData.username"  placeholder="Username"></ion-input>
+  <ion-col></ion-col>
+
+
+  <ion-input label="Passsword" label-placement="floating" fill="outline" name="password" [(ngModel)]="formData.password" placeholder="password" type="password"></ion-input>
+    <ion-row></ion-row>
+
+ <ion-button class="button" type="submit"  shape="round">
+  Login
+  </ion-button>
+
+</form>
+</div>
+
+
+  </div>
+ 
+</ion-content>
