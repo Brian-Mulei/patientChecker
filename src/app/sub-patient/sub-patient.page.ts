@@ -70,10 +70,9 @@ export class SubPatientPage implements OnInit {
      // Replace the console.log with your actual HTTP request
     this.api.deletePatient(id).subscribe(
       (response)=> {
-        return   this.delay(2000).pipe(
-          switchMap(() =>  this.router.navigate(['/patient'])
-          )
-        )  
+       
+              this.router.navigate(['/patient']);
+        
 
      },
      (error) =>{

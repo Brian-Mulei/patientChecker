@@ -34,13 +34,15 @@
     <!-- Display your data here -->
     <div class="card p-2 m-4">
       <h2 class="ion-text-center">Images</h2>
+
+      <ion-grid>
       <ion-list >
  
         <ion-item *ngFor="let file of uploadedFiles; index as position">
 
           <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
 
-          <ion-card >
+           <ion-card >
             <img   style="width: 200px;" alt="Silhouette of mountains" src="{{baseImageUrl + file.image}}" />
             
             <ion-card-header>
@@ -59,13 +61,12 @@
               ></ion-alert -->
             </ion-card-content>
           </ion-card>
-
-          </div>
+           </div>
          </ion-item>
     
      
       </ion-list>
-   
+    </ion-grid>
   </div>
   </ng-container>
 
