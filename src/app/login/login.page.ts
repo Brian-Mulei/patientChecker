@@ -16,11 +16,15 @@ export class LoginPage implements OnInit {
     password: ''
   };
  
+  private sstorage: Storage ;
 
 
   constructor(private api: ApiService, private storage: Storage,private loadingCtrl: LoadingController,
     
-    private router: Router, private toastController: ToastController) { }
+    private router: Router, private toastController: ToastController) { 
+      this.storage.create();
+
+    }
 
   ngOnInit() {
   }
@@ -57,11 +61,8 @@ export class LoginPage implements OnInit {
 
         console.log('Login successful');
 
-        this.storage.create().then(async () => {
-          // Now you can perform operations on the storage
-          await this.storage.set('isLoggedIn', true);
-
-        });
+        await this.storage.set('isLoggedIn', true);
+       
      
 
 

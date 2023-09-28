@@ -1,20 +1,27 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
   {
     path: 'home',
+    canActivate: [AuthGuard],
+
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
    },
    {
     path: 'home/upload',
+ 
 redirectTo:'upload'  },
   {
     path: 'upload/home',
+ 
 redirectTo:"home" 
   },
   {
     path: 'home/patient',
+ 
 redirectTo:"patient" 
   },
   {
@@ -66,26 +73,38 @@ redirectTo:"home"
   },
   {
     path: 'upload',
+    canActivate: [AuthGuard],
+
     loadChildren: () => import('./upload/upload.module').then( m => m.UploadPageModule)
   },
   {
     path: 'patient',
+    canActivate: [AuthGuard],
+
     loadChildren: () => import('./patient/patient.module').then( m => m.PatientPageModule)
   },
   {
     path: 'file',
+    canActivate: [AuthGuard],
+
     loadChildren: () => import('./file-uploader/file-uploader.module').then( m => m.FileUploaderPageModule)
   },
   {
     path: 'sub-patient',
+    canActivate: [AuthGuard],
+
     loadChildren: () => import('./sub-patient/sub-patient.module').then( m => m.SubPatientPageModule)
   },
   {
     path: 'edit-patient',
+    canActivate: [AuthGuard],
+
     loadChildren: () => import('./edit-patient/edit-patient.module').then( m => m.EditPatientPageModule)
   },
   {
     path: 'new-patient',
+    canActivate: [AuthGuard],
+
     loadChildren: () => import('./new-patient/new-patient.module').then( m => m.NewPatientPageModule)
   },
 
